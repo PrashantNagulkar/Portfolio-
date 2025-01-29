@@ -10,6 +10,8 @@
     --secondary-color: #6b7b75;
     --accent-color: #384b44;
     --card-bg: #f8f9fa;
+    --navbar-bg: #80978F;
+    --project-card-bg: #80978F;
 }
 
 [data-theme="dark"] {
@@ -19,12 +21,15 @@
     --secondary-color: #80978F;
     --accent-color: #4a5d56;
     --card-bg: #2d2d2d;
+    --navbar-bg: #2d2d2d;
+    --project-card-bg: #2d2d2d;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
 }
 
 body {
@@ -32,7 +37,7 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 /* Utility classes */
@@ -46,9 +51,10 @@ body {
 .navbar {
     position: fixed;
     width: 100%;
-    background: #80978F;
+    background: var(--navbar-bg, #80978F);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .nav-content {
@@ -76,11 +82,12 @@ body {
     text-decoration: none;
     color: black;
     font-weight: 500;
-    transition: color 0.3s;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .nav-links a:hover {
-    color: #2563eb;
+    color: var(--accent-color);
+    transform: translateY(-2px);
 }
 
 .menu-icon {
@@ -240,11 +247,17 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    background: #80978F;
+    background: var(--project-card-bg, #80978F);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
     padding: 2rem;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .project-image {
@@ -395,7 +408,7 @@ body {
     background: var(--card-bg);
     color: var(--text-color);
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .form-group textarea {
@@ -405,8 +418,8 @@ body {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none;
-    border-color: var(--accent-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(128, 151, 143, 0.2);
 }
 
 /* Theme Toggle */
@@ -452,7 +465,7 @@ body {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
     z-index: 1000;
 }
 
